@@ -1,0 +1,42 @@
+/* CSS Variables for themes */
+:root {
+  --bg: #fff;
+  --text: #222;
+  --primary: #007BFF;
+  --card: #f8f9fa;
+}
+.dark-theme {
+  --bg: #181818;
+  --text: #f8f9fa;
+  --primary: #90caf9;
+  --card: #222;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+button, .toggle-btn {
+  background: var(--primary);
+  color: var(--bg);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+}
+.toggle-btn {
+  margin: 20px auto;
+  display: block;
+}
+.card {
+  background: var(--card);
+  color: var(--text);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(197, 28, 28, 0.04);
+  padding: 30px 20px;
+  margin: 20px auto;
+  max-width: 400px;
+}
