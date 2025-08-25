@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Recipe</title>
+</head>
+<body>
+  <h1>Add a New Recipe</h1>
+  <form id="recipeForm" enctype="multipart/form-data">
+    <input type="text" name="title" placeholder="Title"><br><br>
+    <textarea name="description" placeholder="Description"></textarea><br><br>
+    <input type="text" name="ingredients" placeholder="Ingredients (comma separated)"><br><br>
+    <input type="text" name="instructions" placeholder="Instructions (comma separated)"><br><br>
+    <input type="file" name="image"><br><br>
+    <button type="submit">Save</button>
+  </form>
+
+  <script>
+    document.getElementById("recipeForm").addEventListener("submit", async e => {
+      e.preventDefault();
+      let formData = new FormData(e.target);
+      await fetch("http://localhost:5000/api/recipes", {
+        method: "POST",
+        body: formData
+      });
+      alert("Recipe Added!");
+      window.location.href = "index.html";
+      window.location.href = "new.html";
+    });
+  </script>
+</body>
+</html>

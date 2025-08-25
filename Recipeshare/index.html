@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🍳 RecipeShare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>RecipeShare</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="new.html">Add Recipe</a>
+    </nav>
+  </header>
+
+  <main id="recipes"></main>
+
+  <script>
+    async function loadRecipes() {
+      let res = await fetch("http://localhost:5000/api/recipes");
+      let data = await res.json();
+      document.getElementById("recipes").innerHTML = data.map(r => `
+        <div class="card">
+          <img src="http://localhost:5000/${r.imageUrl}" width="100%">
+          <h2>${r.title}</h2>
+          <p>${r.description}</p>
+          <a href="recipe.html?id=${r._id}">View Recipe</a>
+        </div>
+      `).join("");
+    }
+    loadRecipes();
+  </script>
+</body>
+</html>
